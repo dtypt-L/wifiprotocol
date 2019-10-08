@@ -1,0 +1,32 @@
+
+{
+    "name": "bober/wifi-protocol",
+    "description": "The WIFI Protocol",
+    "type": "library",
+    "keywords": [
+        "portal",
+        "radius",
+        "wifi",
+        "protocol",
+        "802.x"
+    ],
+    "homepage": "http://bober.dtypt.cn/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Bober",
+            "email": "bober.l@foxmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "wifi\\protocol\\": "src"
+        }
+    }
+}
