@@ -4,5 +4,6 @@
 *.txt
 */logs
 */vendor
+tests
+vendor
 !*LICENSE.txt
-
