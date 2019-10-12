@@ -85,9 +85,20 @@ github.com/BoberL/wifiprotocol
 
 ~~~
 wifiprotocol  目录名称（扩展类库）
-├─auto          自动加载文件
+├─auto          自动加载文件目录
+│  │ 
+│  ├─config             配置文件目录
+│  │  ├─xxx.php         xxx文件
+│  │  ├─xxx.php         xxx文件
+│  │  └─xxx.php         xxx文件
+│  ├─extra              扩展文件目录
+│  │  ├─xxx.php         xxx文件
+│  │  ├─xxx.php         xxx文件
+│  │  └─xxx.php         xxx文件
 │  ├─base.php            基数函数文件
-│  └─xxx.php             公共函数
+│  ├─common.php          公共函数文件
+│  ├─config.php          自定义配置文件
+│  └─helper.php          自定义函数
 │
 ├─socket           Socket协议目录
 │  ├─TCP.php            TCP协议
@@ -102,15 +113,18 @@ wifiprotocol  目录名称（扩展类库）
 │  └─xxx.php            xxx文件
 │
 ├─library            工具类库目录
-│  ├─AutoLoad.php       自动加载类库
+│  ├─xxx.php            xxx类库
 │  └─Bytes.php          Bytes字节操作类库
 │
 ├─extend                扩展类库目录
+├─Base.php              基础类文件
 ├─Portal.php            Portal协议文件
 ├─Radius.php            Radius协议文件
 ├─Socket.php            Socket协议文件
 ├─LICENSE.txt           授权说明文件
 ├─README.md             README 文件
+│
+
 
 ~~~
 

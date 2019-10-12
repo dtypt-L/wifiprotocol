@@ -8,13 +8,10 @@
  */
 
 namespace wifi\protocol;
-
-use wifi\protocol\library\AutoLoad;
 use wifi\protocol\Socket;
-
-class Portal
+class Portal extends Base
 {
-    protected $protocol = '__PORTAL';        //协议名称
+    protected $protocol = 'PORTAL';        //协议名称
     protected $isPAP = true;                 //是否PAP认证
     protected $portal = '';                  //portal协议
     protected $serveIp = '127.0.0.1';         //通讯服务器IP地址
@@ -34,17 +31,21 @@ class Portal
      */
     public function __construct($isPAP = 1, $serveIp = '127.0.0.1', $servePort = 2000, $serveProtocol = 'UDP', $serveTimeOut = 2)
     {
-        new AutoLoad();
+
+        $class=explode('\\',__CLASS__);
+        $className=strtoupper(end($class));
+        $this->protocol=$className;
         $this->serveIp = $serveIp;
         $this->servePort = $servePort;
         $this->serveProtocol = $serveProtocol;
         $this->serveTimeOut = $serveTimeOut;
         $this->isPAP = $isPAP ? 1 : 0;
-
+        parent::__construct($className);
         $userIp = get_client_ip(0, true);
-//        $this->setPortal(7, $userIp);
+        if ($userIp!=='0.0.0.0'){
+            $this->setPortal(7, $userIp);
+        }
         $this->setPortal(2, $this->isPAP);
-
     }
 
     /**
@@ -61,7 +62,7 @@ class Portal
                 $this->setPortal($k, $v);
             }
         } else {
-            set_protocol($key, $val, $this->protocol);
+            $this->setProtocol($key, $val);
         }
         return $this;
     }
@@ -74,7 +75,7 @@ class Portal
      */
     public function getPortal($TLV = false, $isChrStr = true)
     {
-        $this->portal = get_protocol($TLV, $isChrStr, $this->protocol);
+        $this->portal = $this->getProtocol($TLV, $isChrStr);
         return $this->portal;
     }
 
@@ -86,7 +87,7 @@ class Portal
      */
     public function getPortalErrMsg($type = 0, $code = 0)
     {
-        return get_protocol_code_msg($type, $code, $this->protocol);
+        return $this->getProtocolMsg($type, $code);
     }
 
     /**
