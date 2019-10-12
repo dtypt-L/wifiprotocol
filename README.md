@@ -1,42 +1,134 @@
 WIFI-Protocol
 ===============
 
-WIFI-Protocol 是提供WIFI以Web Portal方式提供身份验证，授权，记帐和审计服务
+WIFI-Protocol 是提供WIFI以Web portal方式提供身份验证，授权，记帐和审计服务
  + 认证、授权、计费、审计（authentication、authorization、accounting、auditing）
- + 实现Portal1.0+2.0协议
+ + 实现portal1.0+2.0协议
  + 实现Radius1.0+2.0协议
 
 > 的运行环境要求LAMP/LNMP（Linux>=6.4 Apache>=2.2 Nginx>=1.14 Mysql>=5.6 PHP>=5.4）
 详细开发文档参考 [AAAA-WIFI完全开发手册](https://gitee.com/fyxtw/aaaa/wikis)
 
 <hr>
-## 目录结构
+
+## 一、使用方法
+
+### 1.1、安装
+
+~~~
+  composer require bober/wifi-protocol ~1.0.0-beta
+~~~
+### 1.2、开发文档
+
+1.2.1、[github地址](github.com/BoberL/wifiprotocol)
+~~~
+github.com/BoberL/wifiprotocol
+~~~
+### 1.3、使用方法
+
+1.3.1、Portal协议
+
+
+~~~
+//初始化
+   /**
+      * Portal constructor.
+      * 初始化协议
+      * @param int $isPAP PAP认证=1 CHAP认证=0
+      * @param string $serveIp 用户IP
+      * @param int $servePort
+      * @param string $serveProtocol
+      * @param int $serveTimeOut
+      * @throws \Exception
+      */
+ $Portal = new Portal(1,$nasip,2000);
+ 
+//上线
+ $data = $Portal->onLine($userip, $username, $userpass);
+    /**
+      * Potal认证
+      * @param null $IP 服务端IP
+      * @param null $userIp 用户IP
+      * @param null $userName 用户账号
+      * @param null $userPass 用户密码
+      * @param bool $isPAP 认证类型
+      * @return array|bool
+      * @throws \Exception
+      */
+      
+ //下线   
+  $data=$Portal->offLine($userip);  
+  /**
+    * 下线
+    * @param null $userIp
+    * @param bool $isPAP
+    * @return array|bool
+    * @throws \Exception
+    */
+    
+   //MAC无感知认证后台进程监听 
+  $Portal->listen("wifi\\protocol\\Portal", "callBackFun")
+  /**
+     * 后台进程  MAC无感知认证
+     * @param string $callClass
+     * @param string $callAction
+     * @return mixed
+     * @throws \Exception
+     */
+~~~
+
+<hr>
+
+## 二、目录结构
 
 初始的目录结构如下：
 
 ~~~
 wifiprotocol  目录名称（扩展类库）
-├─portal           portal协议目录
+├─auto          自动加载文件目录
+│  │ 
+│  ├─config             配置文件目录
+│  │  ├─xxx.php         xxx文件
+│  │  ├─xxx.php         xxx文件
+│  │  └─xxx.php         xxx文件
+│  ├─extra              扩展文件目录
+│  │  ├─xxx.php         xxx文件
+│  │  ├─xxx.php         xxx文件
+│  │  └─xxx.php         xxx文件
+│  ├─base.php            基数函数文件
+│  ├─common.php          公共函数文件
+│  ├─config.php          自定义配置文件
+│  └─helper.php          自定义函数
+│
+├─socket           Socket协议目录
+│  ├─TCP.php            TCP协议
+│  └─UDP.php            UDP协议
+│
+├─portal           Portal协议目录
 │  ├─xxx.php            xxx文件
 │  └─xxx.php            xxx文件
 │
-├─radius           radius协议目录
+├─radius           Radius协议目录
 │  ├─xxx.php            xxx文件
 │  └─xxx.php            xxx文件
 │
 ├─library            工具类库目录
-│  ├─xxx.php            xxx文件
-│  └─xxx.php            xxx文件
+│  ├─xxx.php            xxx类库
+│  └─Bytes.php          Bytes字节操作类库
 │
 ├─extend                扩展类库目录
+├─Base.php              基础类文件
 ├─Portal.php            Portal协议文件
 ├─Radius.php            Radius协议文件
+├─Socket.php            Socket协议文件
 ├─LICENSE.txt           授权说明文件
 ├─README.md             README 文件
+│
+
 
 ~~~
 
-## 命名规范
+## 三、命名规范
 
 遵循PSR-2命名规范和PSR-4自动加载规范，并且注意如下规范：
 
@@ -56,11 +148,11 @@ wifiprotocol  目录名称（扩展类库）
 *   以双下划线“__”打头的函数或方法作为魔法方法，例如 `__call` 和 `__autoload`；
 
 
-## 参与开发
+## 四、参与开发
 
 请参阅 [AAAA-WIFI 核心框架包](https://gitee.com/fyxtw/aaaa)。
 
-## 版权信息
+## 五、版权信息
 
 AAAA-WIFI遵循Apache2开源协议发布，并提供免费使用。
 
