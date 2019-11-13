@@ -211,7 +211,7 @@ class Portal extends Base
      * @return array|bool
      * @throws \Exception
      */
-    public function inquiry($userIp = null, $isPAP = true)
+    public function inQuiry($userIp = null, $isPAP = true)
     {
         if ($userIp) {
             $this->setPortal(7, $userIp);
@@ -316,7 +316,7 @@ class Portal extends Base
      */
     public static function callBackFun($input = null, $socket = null, $serveIp = null, $servePort = null)
     {
-        return self::onlineMac($input, $socket, $serveIp, $servePort);
+        return self::onLineMac($input, $socket, $serveIp, $servePort);
     }
 
     /**
@@ -328,7 +328,7 @@ class Portal extends Base
      * @return array|bool
      * @throws \Exception
      */
-    public static function onlineMac($input = null, $socket = null, $serveIp = null, $servePort = null)
+    public static function onLineMac($input = null, $socket = null, $serveIp = null, $servePort = null)
     {
         if (empty($input)) {
             throw new \Exception('无感知MAC认证报文不能为空', 203);
