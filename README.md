@@ -7,7 +7,7 @@ WIFI-Protocol 是提供WIFI以Web portal方式提供身份验证，授权，记�
  + 实现Radius1.0+2.0协议
 
 > 的运行环境要求LAMP/LNMP（Linux>=6.4 Apache>=2.2 Nginx>=1.14 Mysql>=5.6 PHP>=5.4）
-详细开发文档参考 [AAAA-WIFI完全开发手册](https://gitee.com/fyxtw/aaaa/wikis)
+详细开发文档参考 [AAAA-WIFI完全开发手册](https://github.com/dtypt-L/wifiprotocol/wikis)
 
 <hr>
 
@@ -16,13 +16,13 @@ WIFI-Protocol 是提供WIFI以Web portal方式提供身份验证，授权，记�
 ### 1.1、安装
 
 ~~~
- composer require bober/wifi-protocol v1.0.0-alpha
+ composer require dtypt/wifi-protocol ~1.0.0-beta
 ~~~
 ### 1.2、开发文档
 
-1.2.1、[github地址](github.com/BoberL/wifiprotocol)
+1.2.1、[github地址](https://github.com/dtypt-L/wifiprotocol)
 ~~~
-github.com/BoberL/wifiprotocol
+github.com/dtypt-L/wifiprotocol
 ~~~
 ### 1.3、使用方法
 
@@ -44,7 +44,7 @@ github.com/BoberL/wifiprotocol
  $Portal = new Portal(1,$nasip,2000);
  
 //上线
- $data = $Portal->onLine($userip, $username, $userpass);
+ $data = $Portal->online($userip, $username, $userpass);
     /**
       * Potal认证
       * @param null $IP 服务端IP
@@ -57,7 +57,7 @@ github.com/BoberL/wifiprotocol
       */
       
  //下线   
-  $data=$Portal->offLine($userip);  
+  $data=$Portal->offline($userip);  
   /**
     * 下线
     * @param null $userIp
@@ -150,7 +150,7 @@ wifiprotocol  目录名称（扩展类库）
 
 ## 四、参与开发
 
-请参阅 [AAAA-WIFI 核心框架包](https://gitee.com/fyxtw/aaaa)。
+请参阅 [AAAA-WIFI 核心框架包](https://github.com/dtypt-L/wifiprotocol)。
 
 ## 五、版权信息
 
@@ -158,10 +158,8 @@ AAAA-WIFI遵循Apache2开源协议发布，并提供免费使用。
 
 本项目包含的第三方源码和二进制文件之版权信息另行标注。
 
-版权所有Copyright © 2019-2020 by AAAA-WIFI (https://gitee.com/fyxtw/aaaa)
+版权所有Copyright © 2019-2020 by AAAA-WIFI DTYPT All rights reserved。
 
-All rights reserved。
-
-AAAA-WIFI® DTYPT(bober)。
+AAAA-WIFI® DTYPT(@all)。
 
 更多细节参阅 [LICENSE.txt](LICENSE.txt)

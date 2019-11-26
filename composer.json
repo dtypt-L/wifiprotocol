@@ -1,6 +1,6 @@
 
 {
-    "name": "bober/wifi-protocol",
+    "name": "dtypt/wifi-protocol",
     "description": "The WIFI Protocol",
     "type": "library",
     "keywords": [
@@ -10,12 +10,12 @@
         "protocol",
         "802.x"
     ],
-    "homepage": "http://bober.dtypt.cn/",
+    "homepage": "http://www.dtypt.cn/",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "Bober",
-            "email": "bober.l@foxmail.com"
+            "name": "DTYPT",
+            "email": "dtypt@foxmail.com"
         }
     ],
     "require": {
